@@ -1,0 +1,14 @@
+.one-cell {
+  /*border: solid black 2px;*/
+  height: 9em;
+  width: 9em;
+}
+
+#game-board {
+  background-image: linear-gradient(darkcyan, green);
+  margin-top: 7em;
+}
+img{
+  height: 8.5em;
+  width: 14.5em;
+}
