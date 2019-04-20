@@ -19,3 +19,9 @@ img {
 .closecards{
   filter: brightness(0%);
 }
+
+#attempts{
+  width: 2em;
+  border: none;
+  margin-left: 1em;
+}

@@ -65,7 +65,7 @@ function checkImageClicks() {
       clickRes.innerHTML = "<div class=\"alert alert-danger\">" + " <strong> nope: ( Try again ! </strong></div>";
     }
     numberOfAttempts++;
-    document.getElementById("attempts").innerText = numberOfAttempts;
+    document.getElementById("attempts").value = numberOfAttempts;
     old_Target = null;
   }
 
