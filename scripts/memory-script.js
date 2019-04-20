@@ -1,9 +1,15 @@
 var clickRes = document.getElementById("click-result");
 var old_Target;
+const gameBoard = document.getElementById("game-board");
+var numberOfAttempts = 0;
+
+function playGame() {
+  setUpNewGame();
+  gameBoard.addEventListener('click', checkImageClicks);
+
+}
 
 function setUpNewGame() {
-  const gameBoard = document.getElementById("game-board");
-
   for (let i = 0; i < 4; i++) {
     let rowEl = document.createElement('div');
     rowEl.setAttribute("class", "row");
@@ -16,8 +22,6 @@ function setUpNewGame() {
   }
   document.body.appendChild(gameBoard);
   setUpImagesInCells();
-  gameBoard.addEventListener('click', checkImageClicks);
-
 }
 
 function setUpImagesInCells() {
@@ -27,7 +31,7 @@ function setUpImagesInCells() {
     let availablePics = getAvailablePics();
     let randomPicId = generateARandomPictureId(availablePics.length);
     let cellImgObj = availablePics[randomPicId - 1];
-    let imgHtml = '<img src="' + cellImgObj.url + '">';
+    let imgHtml = '<img src="' + cellImgObj.url + '" class="pic closecards">';
     cellImgObj.onBoard = cellImgObj.onBoard + 1;
     oneCell.innerHTML = imgHtml;
   }
@@ -41,22 +45,38 @@ function getAvailablePics() {
   return pictures.filter(pic => pic.onBoard < 2);
 }
 
+function openACard(element) {
+  element.classList.remove("closecards");
+}
+
 function checkImageClicks() {
   if (old_Target === null || old_Target === undefined) {
     old_Target = event.target;
   }
-  else {
+  else if (old_Target != event.target) {
     if (old_Target.src === event.target.src) {
-      clickRes.innerText = "yay!! you got it !!";
+      clickRes.innerHTML = "<div class=\"alert alert-success\">" + "<strong> yay !!you got it!! </strong></div> ";
+      openACard(old_Target);
+      openACard(event.target);
+      checkForAnyCloseCards();
+
     }
     else {
-      clickRes.innerText = "nope :( Try again ";
+      clickRes.innerHTML = "<div class=\"alert alert-danger\">" + " <strong> nope: ( Try again ! </strong></div>";
     }
+    numberOfAttempts++;
+    document.getElementById("attempts").innerText = numberOfAttempts;
     old_Target = null;
   }
 
 }
 
+function checkForAnyCloseCards() {
+  let anyClosedCards = document.querySelectorAll(".closecards");
+  if (anyClosedCards.length == 0) {
+    clickRes.innerHTML = "<div class=\"alert alert-info\">" + " <strong> Well done !! Game Over !! </strong></div>";
+  }
+}
 
 const pictures = [
   {
