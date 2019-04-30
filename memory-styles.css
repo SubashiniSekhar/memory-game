@@ -3,25 +3,26 @@
   width: 9em;
 }
 
-.one-cell img.pic:hover{
-filter: brightness(100%);
+.one-cell img.pic:hover {
+  filter: brightness(100%);
 }
 
 #game-board {
   background-image: linear-gradient(darkcyan, green);
   margin-top: 7em;
 }
+
 img {
   height: 8.5em;
   width: 14.5em;
 }
 
-.closecards{
+.closecards {
   filter: brightness(0%);
 }
 
-#attempts{
-  width: 2em;
+#attempts, #timer, #stars {
+  width: 4em;
   border: none;
   margin-left: 1em;
 }

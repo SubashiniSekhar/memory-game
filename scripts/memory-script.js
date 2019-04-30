@@ -2,11 +2,17 @@ var clickRes = document.getElementById("click-result");
 var old_Target;
 const gameBoard = document.getElementById("game-board");
 var numberOfAttempts = 0;
+var timer;
+var numStars = 3;
 
 function playGame() {
   setUpNewGame();
+  if (timer != undefined){
+    clearInterval(timer);
+  }
   gameBoard.addEventListener('click', checkImageClicks);
-
+  setTimer();
+  decideStars();
 }
 
 function setUpNewGame() {
@@ -65,6 +71,7 @@ function checkImageClicks() {
       clickRes.innerHTML = "<div class=\"alert alert-danger\">" + " <strong> nope: ( Try again ! </strong></div>";
     }
     numberOfAttempts++;
+    decideStars();
     document.getElementById("attempts").value = numberOfAttempts;
     old_Target = null;
   }
@@ -75,7 +82,38 @@ function checkForAnyCloseCards() {
   let anyClosedCards = document.querySelectorAll(".closecards");
   if (anyClosedCards.length == 0) {
     clickRes.innerHTML = "<div class=\"alert alert-info\">" + " <strong> Well done !! Game Over !! </strong></div>";
+    clearInterval(timer);
   }
+}
+
+function setTimer() {
+  var seconds = 0;
+  var minutes = 0;
+  timer = setInterval(function(){
+    document.getElementById("timer").value = minutes +" : "+seconds;
+    seconds++;
+    if (seconds>60){
+      minutes++;
+      seconds = 0;
+    }
+  },1000);
+
+}
+
+function decideStars() {
+  if (numberOfAttempts > 10 && numberOfAttempts < 15){
+    numStars = 2;
+  }
+  else if(numberOfAttempts >= 15 && numberOfAttempts <= 20){
+    numStars = 1;
+  }
+  else if(numberOfAttempts > 20 ){
+    numStars = 0;
+  }
+  for(i=0;i<numStars;i++){
+    document.getElementById("stars").innerHTML+="<span class=\"glyphicon glyphicon-star\"></span>";
+  }
+
 }
 
 const pictures = [
