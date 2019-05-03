@@ -81,7 +81,7 @@ function checkImageClicks() {
 function checkForAnyCloseCards() {
   let anyClosedCards = document.querySelectorAll(".closecards");
   if (anyClosedCards.length == 0) {
-    clickRes.innerHTML = "<div class=\"alert alert-info\">" + " <strong> Well done !! Game Over !! </strong></div>";
+    document.getElementById("gameoverDialog").showModal();
     clearInterval(timer);
   }
 }
@@ -101,6 +101,7 @@ function setTimer() {
 }
 
 function decideStars() {
+  document.getElementById("stars").innerHTML = "";
   if (numberOfAttempts > 10 && numberOfAttempts < 15){
     numStars = 2;
   }
@@ -111,7 +112,7 @@ function decideStars() {
     numStars = 0;
   }
   for(i=0;i<numStars;i++){
-    document.getElementById("stars").innerHTML+="<span class=\"glyphicon glyphicon-star\"></span>";
+    document.getElementById("stars").innerHTML+="<span class='glyphicon glyphicon-star'></span>";
   }
 
 }

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="memory-styles.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
 <body onload="playGame()">
 <div class="container" id="game-board">
@@ -21,11 +22,13 @@
     </div>
     <div class=".col-sm-4">
       <label> Number of Attempts </label><input type="text" id="attempts">
-      <p id="stars" style="width: 5px;"></p>
+      <p id="stars"></p>
     </div>
   </div>
 </div>
 <div class="container" id="click-result"></div>
+
+<dialog id="gameoverDialog"><h2>Yipee !! Great Job<br> <h2></h2><h6>Esc to close</h6></dialog>
 
 <script src="scripts/memory-script.js"></script>
 </body>
