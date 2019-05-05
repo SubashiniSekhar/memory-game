@@ -28,7 +28,11 @@
 </div>
 <div class="container" id="click-result"></div>
 
-<dialog id="gameoverDialog"><h2>Yipee !! Great Job<br> <h2></h2><h6>Esc to close</h6></dialog>
+<dialog id="gameoverDialog">
+  <h2>Yipee !! Great Job<br></h2>
+  <button type="button" class="btn btn-success" id="playagain" onclick="document.location.reload()">Play again?</button>
+  <h6>Esc to close</h6>
+</dialog>
 
 <script src="scripts/memory-script.js"></script>
 </body>

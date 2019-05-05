@@ -102,14 +102,11 @@ function setTimer() {
 
 function decideStars() {
   document.getElementById("stars").innerHTML = "";
-  if (numberOfAttempts > 10 && numberOfAttempts < 15){
+  if (numberOfAttempts > 10 && numberOfAttempts <= 15){
     numStars = 2;
   }
-  else if(numberOfAttempts >= 15 && numberOfAttempts <= 20){
+  else if(numberOfAttempts > 15){
     numStars = 1;
-  }
-  else if(numberOfAttempts > 20 ){
-    numStars = 0;
   }
   for(i=0;i<numStars;i++){
     document.getElementById("stars").innerHTML+="<span class='glyphicon glyphicon-star'></span>";
