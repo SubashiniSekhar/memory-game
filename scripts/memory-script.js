@@ -72,6 +72,7 @@ function checkImageClicks() {
     }
     numberOfAttempts++;
     decideStars();
+    document.querySelector("#endstars").innerHTML = document.getElementById("stars").innerHTML;
     document.getElementById("attempts").value = numberOfAttempts;
     old_Target = null;
   }
@@ -82,6 +83,7 @@ function checkForAnyCloseCards() {
   let anyClosedCards = document.querySelectorAll(".closecards");
   if (anyClosedCards.length == 0) {
     document.getElementById("gameoverDialog").showModal();
+    document.getElementById("endtimer").value = document.getElementById("timer").value;
     clearInterval(timer);
   }
 }

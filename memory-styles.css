@@ -26,3 +26,6 @@ img {
   border: none;
   margin-left: 1em;
 }
+#endtimer, #endstars{
+  border: none;
+}
